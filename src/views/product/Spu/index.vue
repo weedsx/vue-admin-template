@@ -139,12 +139,12 @@ export default {
     //三级联动的自定义事件，可以把子组件的相应的id传递给父组件
     getCategoryId({ categoryId, level }) {
       //categoryId:获取到一、二、三级分类的id  level：为了区分是几级id
-      if (level == 1) {
+      if (level === 1) {
         this.category1Id = categoryId;
         //清除2、3级分类的id
         this.category2Id = "";
         this.category3Id = "";
-      } else if (level == 2) {
+      } else if (level === 2) {
         this.category2Id = categoryId;
         //清除3级id
         this.category3Id = "";
@@ -160,7 +160,7 @@ export default {
       const { page, limit, category3Id } = this;
       //携带三个参数:page 第几页  limit 每一页需要展示多少条数据  三级分类id
       let result = await this.$API.spu.reqSpuList(page, limit, category3Id);
-      if (result.code == 200) {
+      if (result.code === 200) {
         this.total = result.data.total;
         this.records = result.data.records;
       }
